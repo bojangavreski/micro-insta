@@ -1,0 +1,15 @@
+.newsfeed{
+  display: flex;
+  max-width: 30%;
+  min-width: 400px;
+  border: 1px gray solid;
+  justify-content: center;
+  align-items: center;
+  margin-top: 25px;
+}
+.newsfeed p{
+  max-width: 300px;
+}
+.newsfeed-header{
+  max-width: 300px;
+}

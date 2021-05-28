@@ -1,0 +1,19 @@
+<mat-toolbar color="primary">
+  <mat-toolbar-row>
+    <button mat-button routerLink="/feed">My App</button>
+    <span class="example-spacer" *ngIf='innerWidth<=650'></span>
+    <button [matMenuTriggerFor]="menu" mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon"  *ngIf='innerWidth<=650'>
+      <mat-icon>menu</mat-icon>
+    </button>
+    <mat-menu #menu="matMenu">
+      <a mat-button routerLink="/newpost">Add New Post</a>
+    </mat-menu>
+    <div class="spacer" *ngIf='innerWidth>650'></div>
+    <a mat-button routerLink="/newpost" *ngIf='innerWidth>650'>Add New Post</a>
+  </mat-toolbar-row>
+  </mat-toolbar>
+
+  <div class="main-wrapper">
+<router-outlet></router-outlet>
+</div>
+

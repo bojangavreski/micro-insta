@@ -1,0 +1,11 @@
+<form #form="ngForm" (ngSubmit)="onSubmit(form)" class="form-control add-post-form">
+<mat-form-field class="input-field" appearance="fill">
+  <mat-label id  for="name" >Title</mat-label>
+  <input matInput [(ngModel)]="newPost.title" name="title" class="form-control" required/>
+</mat-form-field>
+<mat-form-field class="body-field" appearance="fill">
+  <mat-label>Body</mat-label>
+  <textarea matInput [(ngModel)]="newPost.url" name="body" class="form-control"></textarea>
+</mat-form-field>
+<button class="post-button" mat-raised-button color="primary">{{buttonName}}</button>
+</form>

@@ -1,0 +1,12 @@
+<div class="newsfeed" *ngFor='let post of postList'>
+  <mat-card class="post-card">
+    <mat-card-header class="newsfeed-header">
+      <mat-card-title routerLink='/post/{{post.id}}'><a [routerLink]='[post.id]'>{{post.title}}</a></mat-card-title>
+      <mat-card-subtitle>something</mat-card-subtitle>
+    </mat-card-header>
+    <img [src]="post.thumbnailUrl"/>
+    <mat-card-content>
+      <h1>{{post.id}}</h1>
+    </mat-card-content>
+    </mat-card>
+</div>
