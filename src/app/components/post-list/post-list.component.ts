@@ -12,21 +12,26 @@ export class PostListComponent implements OnInit {
   randomPic = "https://picsum.photos/600/300"
   postList: IPost[] = [];
   sub! : Subscription;
+  start : number = 0;
+  limit : number = 15;
   constructor(private dataService:DataServiceService) { }
 
-  ngOnInit(): void {
-    this.sub = this.dataService.getData().subscribe(
-        {
-          next: posts => {
-            this.postList = posts.slice(0,40);
-          }
+  fetchData(){
+    this.sub = this.dataService.getData(this.start,this.limit).subscribe(
+      {
+        next: posts  => {
+          console.log(posts.length)
+          this.postList=this.postList.concat(posts);
         }
-      )
-
+      }
+    )
   }
-
-  ngOnDestroy():void {
-    this.sub.unsubscribe();
+  ngOnInit(): void {
+    this.fetchData();
   }
-
+  showMore(){
+    this.start+=15;
+    console.log(`Start : ${this.start} Limit : ${this.limit}`);
+    this.fetchData();
+  }
 }

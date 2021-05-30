@@ -10,9 +10,9 @@ export class DataServiceService {
 
   constructor(private http:HttpClient) { }
 
-  getData():Observable<IPost[]>{
+  getData(start:number,limit:number):Observable<IPost[]>{
       const headers = new HttpHeaders({'Content-Length':'50'});
-      return this.http.get<IPost[]>('https://jsonplaceholder.typicode.com/photos',{headers:headers});
+      return this.http.get<IPost[]>(`https://jsonplaceholder.typicode.com/photos/?_sort=id&_order=asc&_start=${start}&_limit=${limit}`,{headers:headers});
   }
   getDataById(id:number):Observable<IPost>{
     return this.http.get<IPost>(`https://jsonplaceholder.typicode.com/photos/${id}`);

@@ -47,8 +47,7 @@ import { DialogComponent } from './components/post-details/dialog/dialog.compone
     MatSnackBarModule,
     MatDialogModule,
     RouterModule.forRoot(
-      [ {path:'',component:PostListComponent},
-        {path:'feed',component:PostListComponent},
+      [ {path:'feed',component:PostListComponent},
         {path:'post/:id',component:PostDetailsComponent},
         {path:'newpost',component:NewpostComponent},
         {path:'newpost/:id',component:NewpostComponent},
