@@ -1,6 +1,6 @@
 .newsfeed{
   display: flex;
-  max-width: 30%;
+  max-width: 400px;
   min-width: 400px;
   border: 1px gray solid;
   justify-content: center;
@@ -12,4 +12,7 @@
 }
 .newsfeed-header{
   max-width: 300px;
+}
+.post-card{
+  width: 70%;
 }

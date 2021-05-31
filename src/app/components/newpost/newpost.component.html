@@ -4,8 +4,8 @@
   <input matInput [(ngModel)]="newPost.title" name="title" class="form-control" required/>
 </mat-form-field>
 <mat-form-field class="body-field" appearance="fill">
-  <mat-label>Body</mat-label>
-  <textarea matInput [(ngModel)]="newPost.url" name="body" class="form-control"></textarea>
+  <mat-label>Image</mat-label>
+  <input matInput [(ngModel)]="newPost.url" name="body" class="form-control"/>
 </mat-form-field>
 <button class="post-button" mat-raised-button color="primary">{{buttonName}}</button>
 </form>
