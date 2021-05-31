@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { DataServiceService } from 'src/app/services/data-service.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { IPost } from '../post/post';
@@ -16,6 +16,7 @@ export class NewpostComponent implements OnInit {
     private dataService: DataServiceService,
     private activatedRoute: ActivatedRoute,
     private _snackBar: MatSnackBar,
+    private router:Router
    ) {}
 
   buttonName: string = 'Post';
@@ -38,9 +39,13 @@ export class NewpostComponent implements OnInit {
   }
   updatePost(): void {
     this.dataService.postData(this.newPost).subscribe(
-      () => this.openSnackBar('Successfully updated'),
+      () => {
+        this.openSnackBar('Successfully updated');
+        this.router.navigate([`post/${this.newPost.id}`]);
+      },
       (error) => console.log(error)
     );
+
   }
   onSubmit(form: NgForm): void {
     if (form.valid) {

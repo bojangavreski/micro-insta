@@ -17,6 +17,13 @@ export class PostDetailsComponent implements OnInit {
               private router:Router,
               private _dialog:MatDialog,
               private _snackBar: MatSnackBar) { }
+
+
+
+
+
+
+@Input()
   id = 0;
 
   ngOnInit(): void {
@@ -33,11 +40,15 @@ export class PostDetailsComponent implements OnInit {
   }
 
    getPostById():void {
-     this.dataService.getDataById(this.id).subscribe({
-       next: (newPost:IPost)=>{
+     this.dataService.getDataById(this.id).subscribe(
+       (newPost:IPost)=>{
           this.post=newPost;
-       }
-     })
+       },
+       error =>{
+        this.openSnackBar(`ERROR 404: Post with id: ${this.id} is not found`);
+        this.router.navigate(['']);
+     }
+     )
    }
 
    editPost():void{
@@ -48,7 +59,11 @@ export class PostDetailsComponent implements OnInit {
      this.dataService.deletePost(this.id).subscribe(
        () => {
           this.openSnackBar("Post successfully deleted");
-          this.router.navigate([''])
+          this.router.navigate(['']);
+       },
+       error =>{
+          this.openSnackBar(error.message);
+          this.router.navigate(['']);
        }
      )
    }
